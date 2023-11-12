@@ -1,0 +1,151 @@
+/* CSS Custom Properties for Colors */
+:root {
+    --dark-bg-color: #121212;
+    --text-color: #FFFFFF;
+    --input-bg-color: #333333;
+    --button-bg-color: #000000;
+    --icon-fill-color: var(--text-color);
+    --outline-focus-color: rebeccapurple;
+    --keyhole-hover-color: hsl(190, 81%, 67%);
+    --keyhole-active-color: hsl(40, 93%, 51%);
+}
+
+/* CSS Custom Properties for Measurements */
+:root {
+    --password-input-width: 690px;
+    --password-input-height: 40px;
+    --toggle-button-width: 50px;
+    --toggle-button-height: var(--password-input-height);
+    --icon-size: 24px;
+    --form-element-border-radius: 4px;
+    --input-padding: 10px;
+    --submit-button-size: 40px;
+}
+
+/* Body styling */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Container for form */
+div#formContainer {
+    display: flex;
+    animation-name: blurToClear;
+    animation-delay: 0s;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+/* Login form styling */
+form#loginForm {
+    position: relative;
+    display: flex;
+}
+
+/* Password input wrapper */
+div#passwordWrapper {
+    position: relative;
+    display: flex;
+}
+
+/* Placeholder style for password input */
+input#passwordInput::placeholder {
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Password input styling */
+input#passwordInput {
+    width: var(--password-input-width);
+    height: var(--password-input-height);
+    border-radius: var(--form-element-border-radius) 0 0 var(--form-element-border-radius);
+    border: none;
+    padding: 0 var(--input-padding);
+    padding-right: calc(var(--toggle-button-width) + var(--input-padding));
+    color: var(--text-color);
+    background-color: var(--input-bg-color);
+    font-size: 1em;
+    outline: none;
+    text-align: center;
+}
+
+/* Focus state for password input */
+input#passwordInput:focus {
+    outline: 1px solid var(--outline-focus-color);
+}
+
+/* Toggle password visibility button */
+button#togglePassword {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--toggle-button-width);
+    height: var(--toggle-button-height);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Icons styling */
+svg#eyeIcon, svg#eyeSlashIcon {
+    display: none;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    fill: var(--icon-fill-color);
+}
+
+/* Eye icon visibility controlled by JavaScript */
+svg#eyeIcon {
+    display: block;
+}
+
+/* Submit button styling */
+button#submitButton {
+    width: var(--submit-button-size);
+    height: var(--submit-button-size);
+    border-radius: 0 var(--form-element-border-radius) var(--form-element-border-radius) 0;
+    border: none;
+    background-color: var(--button-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Keyhole icon styles and interactions */
+svg#keyholeIcon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    fill: var(--keyhole-hover-color);
+}
+svg#keyholeIcon:hover {
+    fill: var(--keyhole-hover-color);
+}
+svg#keyholeIcon:active {
+    fill: var(--keyhole-active-color);
+}
+
+
+@keyframes blurToClear {
+    from {
+        filter: blur(calc(100vh / 8)); /* Adjust the blur value as needed */
+        opacity: 0;
+    }
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
